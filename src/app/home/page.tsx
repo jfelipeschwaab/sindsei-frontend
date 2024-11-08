@@ -1,4 +1,3 @@
-// src/app/home/page.tsx
 'use client'
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
@@ -10,37 +9,39 @@ import emailsData from '../../data/emailsData';
 import { Email } from '../types/types';
 
 const HomePage: React.FC = () => {
-  const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
-  const [searchTerm, setSearchTerm] = useState<string>(''); 
+  const [emailSelecionado, setEmailSelecionado] = useState<Email | null>(null);
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Todos');
+  const [termoPesquisa, setTermoPesquisa] = useState<string>(''); 
+  const [emailsLidos, setEmailsLidos] = useState<Set<string>>(new Set()); 
 
-  const handleSelectEmail = (email: Email) => {
-    setSelectedEmail(email);
+  const handleSelecionarEmail = (email: Email) => {
+    setEmailSelecionado(email);
+    setEmailsLidos(prevEmailsLidos => new Set(prevEmailsLidos).add(email.id.toString())); 
   };
 
-  const handleSelectCategory = (category: string) => {
-    setSelectedCategory(category);
-    setSelectedEmail(null); 
+  const handleSelecionarCategoria = (categoria: string) => {
+    setCategoriaSelecionada(categoria);
+    setEmailSelecionado(null); 
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleMudancaPesquisa = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTermoPesquisa(event.target.value);
   };
 
-  const filteredEmails = emailsData
-    .filter(email => selectedCategory === 'Todos' || email.tag === selectedCategory)
-    .filter(email => email.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                     email.sender.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                     email.body.toLowerCase().includes(searchTerm.toLowerCase()));
+  const emailsFiltrados = emailsData
+    .filter(email => categoriaSelecionada === 'Todos' || email.tag === categoriaSelecionada)
+    .filter(email => email.subject.toLowerCase().includes(termoPesquisa.toLowerCase()) ||
+                     email.sender.toLowerCase().includes(termoPesquisa.toLowerCase()) ||
+                     email.body.toLowerCase().includes(termoPesquisa.toLowerCase()));
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-      <CategoryNav selectedCategory={selectedCategory} onSelectCategory={handleSelectCategory} />
+      <Header searchTerm={termoPesquisa} onSearchChange={handleMudancaPesquisa} />
+      <CategoryNav selectedCategory={categoriaSelecionada} onSelectCategory={handleSelecionarCategoria} />
       <div className="flex flex-1">
         <Sidebar />
-        <EmailList emails={filteredEmails} onSelectEmail={handleSelectEmail} />
-        <EmailDetail email={selectedEmail} />
+        <EmailList emails={emailsFiltrados} onSelectEmail={handleSelecionarEmail} emailsLidos={emailsLidos} emailSelecionado={emailSelecionado} />
+        <EmailDetail email={emailSelecionado} />
       </div>
     </div>
   );
