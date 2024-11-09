@@ -10,23 +10,27 @@ type EmailListProps = {
 
 const EmailList: React.FC<EmailListProps> = ({ emails, onSelectEmail, emailsLidos, emailSelecionado }) => {
   return (
-    <div className="flex-2 p-4 border-r border-gray-300">
-      {emails.map(email => (
-        <div
-          key={email.id}
-          className={`flex justify-between items-center p-3 border-b border-gray-200 cursor-pointer 
-                      ${emailsLidos.has(email.id.toString()) ? 'bg-gray-100 text-gray-500' : ''} 
-                      ${emailSelecionado && emailSelecionado.id === email.id ? 'border-2 border-black' : ''} 
-                      hover:bg-gray-200`}
-          onClick={() => onSelectEmail(email)}
-        >
-          <span className={`font-semibold ${email.tag === 'reuniao' ? 'text-blue-500' : email.tag === 'campanha' ? 'text-red-500' : 'text-gray-900'}`}>
-            {email.sender}
-          </span>
-          <span className="flex-1 ml-4 text-gray-800">{email.subject}</span>
-          <span className="text-gray-500">{email.time}</span>
-        </div>
-      ))}
+    <div className="flex-[3] p-4 border-r border-gray-200 overflow-y-auto">
+      {emails.map(email => {
+        const emailKey = `${email.subject}-${email.date}`;
+        const isSelected = emailSelecionado && `${emailSelecionado.subject}-${emailSelecionado.date}` === emailKey;
+
+        return (
+          <div
+            key={emailKey}
+            className={`flex justify-between items-center p-3 cursor-pointer 
+                        ${emailsLidos.has(emailKey) ? 'bg-gray-50 text-gray-500' : 'text-gray-800'}
+                        ${isSelected ? 'border-l-4 border-blue-400 bg-blue-50' : 'hover:bg-gray-100'}`}
+            onClick={() => onSelectEmail(email)}
+          >
+            <span className={`font-semibold ${email.tag === 'reuniao' ? 'text-blue-500' : email.tag === 'campanha' ? 'text-red-500' : 'text-gray-900'}`}>
+              {email.sender || 'Desconhecido'}
+            </span>
+            <span className="flex-1 ml-4 text-gray-700">{email.subject}</span>
+            <span className="text-gray-500 text-sm">{new Date(email.date).toLocaleString()}</span>
+          </div>
+        );
+      })}
     </div>
   );
 };
