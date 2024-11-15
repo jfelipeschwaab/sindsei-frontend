@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+<img src="https://github.com/user-attachments/assets/b4c478e3-0e01-4648-b677-b5723c0e34c8" width="400px" />
+</div>
 
-## Getting Started
 
-First, run the development server:
+# Projeto SINDISEI
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+## Descrição 
+O projeto consiste na automatização de fluxos de e-mails, utilizando um sistema de IA que lerá e classificará os e-mails em categorias, o qual garantirá o agendamento de reuniões e mantimento de informações cruciais. 
+
+
+## Tecnologias Utilizadas
+
+Este projeto utiliza as seguintes tecnologias:
+
+- Ferramenta **N8N**
+- Linguagem **Python**
+- Linguagem **HTML**
+- Linguagem **CSS**
+- Linguagem **JavaScript**
+- Framework **Tailwind CSS**
+
+
+## Instrução e instalação 
+
+### Pré-requisitos 
+
+Para utilizar o projeto, verifique se possui as seguintes ferramentas:
+
+- **N8N**: Uma ferramenta de automação de fluxos de trabalho. 
+Certifique-se de que está corretamente configurada em sua máquina.
+
+### Etapas 
+
+1. Clone o repositório em sua máquina:
+
+```bash 
+git clone https://github.com/jfelipeschwaab/sindsei-frontend.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Acesse o diretório do projeto:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd sindsei-frontend
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Instale os requisitos necessários:
 
-## Learn More
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Inicie o projeto:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Acesse a interface do projeto.
 
-## Deploy on Vercel
+Esse processo de instalação te ajudará a instalar e executar o projeto adequadamente.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Instrução de uso 
+
+1. Configuração Inicial: Após iniciar o projeto, acesse a interface e faça as configurações necessárias, como adicionar suas contas de e-mail ou integrar outras ferramentas ao N8N.
+
+2. Automação de fluxo de e-mails: Para iniciar a automação, ative o fluxo de trabalho principal no N8N. Isso fará com que o sistema leia e classifique os e-mails automaticamente.
+
+3. Visualização de Dados: Acesse o painel de controle para visualizar informações sobre os e-mails classificados e as reuniões agendadas.
+
+4. Interação com o Sistema: Utilize os comandos no terminal ou painel para pausar, retomar ou encerrar a execução do sistema.
+
+Essas instruções permitirão que você configure e utilize a ferramenta de maneira adequada.
+
+## Licença 
+
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+
+ 
+## Contribuidores 
+
+Agradecemos a contribuição de todos os autores e orientadores do projeto.
+
+Autores:
+- Gabriel Tavares
+- Cauã Aguiar
+- Henrique Mendonça
+- Felipe Schwaab
+- Carol Zaiatz
+- Victor Praça
+- Francisco Nascimento
+- Felipe Gaudereto
+- Bárbara Marques
+- Guilherme Leão
+
+Orientadores:
+- Osman Bras
+- Pedro
+- Leon
