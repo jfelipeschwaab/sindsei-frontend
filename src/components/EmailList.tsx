@@ -12,8 +12,8 @@ const EmailList: React.FC<EmailListProps> = ({ emails, onSelectEmail, emailsLido
   return (
     <div className="flex-[3] p-4 border-r border-gray-200 overflow-y-auto">
       {emails.map(email => {
-        const emailKey = `${email.subject}-${email.date}`;
-        const isSelected = emailSelecionado && `${emailSelecionado.subject}-${emailSelecionado.date}` === emailKey;
+        const emailKey = `${email.subject}-${email.date}-${email.sender}`; // Gera uma chave única sem o id
+        const isSelected = emailSelecionado && `${emailSelecionado.subject}-${emailSelecionado.date}-${emailSelecionado.sender}` === emailKey;
 
         return (
           <div

@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
       try {
         const response = await fetch('http://127.0.0.1:8000/api/emails/get-emails/');
         const data = await response.json();
-        setEmails(data); 
+        setEmails(data); // Apenas armazena os emails uma vez
       } catch (error) {
         console.error('Erro ao buscar emails:', error);
       }
@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
 
   const handleSelecionarCategoria = (categoria: string) => {
     setCategoriaSelecionada(categoria);
-    setEmailSelecionado(null); 
+    setEmailSelecionado(null); // Limpa a seleção de email
   };
 
   const handleMudancaPesquisa = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,9 +44,11 @@ const HomePage: React.FC = () => {
 
   const emailsFiltrados = emails
     .filter(email => categoriaSelecionada === 'Todos' || email.tag === categoriaSelecionada)
-    .filter(email => email.subject.toLowerCase().includes(termoPesquisa.toLowerCase()) ||
-                     email.sender.toLowerCase().includes(termoPesquisa.toLowerCase()) ||
-                     email.summary.toLowerCase().includes(termoPesquisa.toLowerCase()));
+    .filter(email => 
+      email.subject.toLowerCase().includes(termoPesquisa.toLowerCase()) ||
+      email.sender.toLowerCase().includes(termoPesquisa.toLowerCase()) ||
+      email.summary.toLowerCase().includes(termoPesquisa.toLowerCase())
+    );
 
   return (
     <div className="flex flex-col min-h-screen">
