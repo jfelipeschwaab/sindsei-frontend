@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 interface FormData {
     username: string;
@@ -15,6 +15,8 @@ export default function SignUp() {
         password: '',
     });
 
+    const URL_API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData((prevData) => ( {
@@ -26,7 +28,7 @@ export default function SignUp() {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/register/', {
+            const response = await fetch(`${URL_API}/api/register/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

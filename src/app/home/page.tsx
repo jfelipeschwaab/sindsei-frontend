@@ -1,10 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import Sidebar from '../../components/Sidebar';
-import EmailList from '../../components/EmailList';
-import EmailDetail from '../../components/EmailDetail';
+import React, { useEffect, useState } from 'react';
 import CategoryNav from '../../components/CategoryNav';
+import EmailDetail from '../../components/EmailDetail';
+import EmailList from '../../components/EmailList';
 import Header from '../../components/Header';
+import Sidebar from '../../components/Sidebar';
 import { Email } from '../types/types';
 
 const HomePage: React.FC = () => {
@@ -12,12 +12,14 @@ const HomePage: React.FC = () => {
   const [emailSelecionado, setEmailSelecionado] = useState<Email | null>(null);
   const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Todos');
   const [termoPesquisa, setTermoPesquisa] = useState<string>(''); 
-  const [emailsLidos, setEmailsLidos] = useState<Set<string>>(new Set()); 
+  const [emailsLidos, setEmailsLidos] = useState<Set<string>>(new Set());
+  
+  const URL_API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
     const fetchEmails = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/emails/get-emails/');
+        const response = await fetch(`${URL_API}/api/emails/get-emails/`);
         const data = await response.json();
         setEmails(data); // Apenas armazena os emails uma vez
       } catch (error) {

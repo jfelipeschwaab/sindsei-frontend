@@ -1,8 +1,8 @@
 // components/SignInSignUp.tsx
 "use client";
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation'; 
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 interface SignUpFormData {
   username: string;
@@ -21,6 +21,9 @@ const SignInSignUp: React.FC = () => {
   const [formData, setFormData] = useState<SignUpFormData>({ username: '', email: '', password: '' });
   const [loginData, setLoginData] = useState<LoginFormData>({ email: '', password: '' });
 
+  const URL_API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, isLogin: boolean) => {
     const { name, value } = e.target;
     if (isLogin) {
@@ -33,7 +36,7 @@ const SignInSignUp: React.FC = () => {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/register/', {
+      const response = await fetch(`${URL_API}/api/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +80,7 @@ const SignInSignUp: React.FC = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/login/', {
+      const response = await fetch(`${URL_API}/api/login/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
