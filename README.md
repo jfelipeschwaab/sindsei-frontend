@@ -23,6 +23,7 @@ Este projeto utiliza as seguintes tecnologias:
 - Framework **Tailwind CSS**
 - Biblioteca **React**
 - Framework **NextJS**
+- Linguagem **TypeScript**
 
 
 ## Instrução e instalação 
