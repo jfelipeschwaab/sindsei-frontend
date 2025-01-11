@@ -16,10 +16,13 @@ Este projeto utiliza as seguintes tecnologias:
 
 - Ferramenta **N8N**
 - Linguagem **Python**
+- Framework **Django REST**
 - Linguagem **HTML**
 - Linguagem **CSS**
 - Linguagem **JavaScript**
 - Framework **Tailwind CSS**
+- Biblioteca **React**
+- Framework **NextJS**
 
 
 ## Instrução e instalação 
