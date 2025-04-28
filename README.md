@@ -100,6 +100,5 @@ Autores:
 - Guilherme Leão
 
 Orientadores:
-- Osman Bras
-- Pedro
-- Leon
+- Francisco Javier
+- Marcos
